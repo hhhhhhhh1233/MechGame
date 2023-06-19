@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://c67bhbogque3n"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_2jikc"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_17ny0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oenme"]
 
@@ -50,7 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85182, -0.667975, 2.33417)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48414, 0)
-script = ExtResource("1_2jikc")
+script = ExtResource("1_17ny0")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
