@@ -2,11 +2,11 @@
 
 ## Todo
 - [ ] Player
-  - [ ] Movement
+  - [x] Movement
   - [ ] Health
   - [ ] Modularity
 - [ ] Enemies
-  - [ ] Attacking Player
+  - [x] Attacking Player
   - [ ] Movement
   - [ ] Taking Damage
 - [ ] Store
