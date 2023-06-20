@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c67bhbogque3n"]
+[gd_scene load_steps=19 format=3 uid="uid://c67bhbogque3n"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_17ny0"]
 
@@ -8,6 +8,11 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jadye"]
 albedo_color = Color(0.192157, 1, 1, 1)
+
+[sub_resource type="Environment" id="Environment_3ew4a"]
+ssil_enabled = true
+sdfgi_enabled = true
+fog_height = -237.14
 
 [sub_resource type="BoxMesh" id="BoxMesh_3l6qp"]
 
@@ -45,6 +50,8 @@ albedo_color = Color(1, 0.431373, 0.341176, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_owvpc"]
 size = Vector3(17.5254, 3.14733, 11.9019)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oxxmv"]
+
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85182, -0.667975, 2.33417)
 
@@ -62,6 +69,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_jadye")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.914381, 0.404854, 0, -0.404854, 0.914381, 0.144172, 1.82702, 4.19689)
+environment = SubResource("Environment_3ew4a")
 
 [node name="Weapon" type="MeshInstance3D" parent="Player"]
 transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0552361, 0.329593, -0.0198421)
@@ -146,7 +154,7 @@ mesh = SubResource("BoxMesh_3l6qp")
 surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
 
 [node name="Dummy4" type="RigidBody3D" parent="Isle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.85404, 5.91914, 5.12571)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.85404, 2.93322, 5.12571)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Isle/Dummy4"]
@@ -173,6 +181,134 @@ mesh = SubResource("CapsuleMesh_f6u0x")
 surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
 
 [node name="Weapon" type="MeshInstance3D" parent="Isle/Dummy5"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy6" type="RigidBody3D" parent="Isle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.91028, 2.09364, -1.91893)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle/Dummy6"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle/Dummy6"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle/Dummy6"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy7" type="RigidBody3D" parent="Isle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.35485, 2.09364, 1.52466)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle/Dummy7"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle/Dummy7"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle/Dummy7"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy8" type="RigidBody3D" parent="Isle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.12172, 2.09364, -2.47327)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle/Dummy8"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle/Dummy8"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle/Dummy8"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy9" type="RigidBody3D" parent="Isle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5883, 2.09364, 1.22519)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle/Dummy9"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle/Dummy9"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle/Dummy9"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy10" type="RigidBody3D" parent="Isle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35403, 2.09364, 3.07545)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle/Dummy10"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle/Dummy10"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle/Dummy10"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy11" type="RigidBody3D" parent="Isle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77757, 2.09364, 5.91187)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle/Dummy11"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle/Dummy11"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle/Dummy11"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy12" type="RigidBody3D" parent="Isle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00556, 2.09364, 6.69057)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle/Dummy12"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle/Dummy12"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle/Dummy12"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy13" type="RigidBody3D" parent="Isle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45016, 2.09364, -6.39578)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle/Dummy13"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle/Dummy13"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle/Dummy13"]
 transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
 mesh = SubResource("BoxMesh_3l6qp")
 surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
@@ -239,6 +375,198 @@ transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831
 mesh = SubResource("BoxMesh_3l6qp")
 surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
 
+[node name="Dummy15" type="RigidBody3D" parent="Isle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.72297, -5.91353, 38.5077)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Dummy15"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle2/Dummy15"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle2/Dummy15"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy16" type="RigidBody3D" parent="Isle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0641, -5.91353, 38.5335)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Dummy16"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle2/Dummy16"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle2/Dummy16"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy17" type="RigidBody3D" parent="Isle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0857, -5.91353, 34.3288)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Dummy17"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle2/Dummy17"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle2/Dummy17"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy18" type="RigidBody3D" parent="Isle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8268, -5.91353, 26.0723)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Dummy18"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle2/Dummy18"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle2/Dummy18"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy19" type="RigidBody3D" parent="Isle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.39022, -5.91353, 27.5631)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Dummy19"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle2/Dummy19"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle2/Dummy19"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy20" type="RigidBody3D" parent="Isle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1681, -5.91353, 31.0284)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Dummy20"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle2/Dummy20"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle2/Dummy20"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy21" type="RigidBody3D" parent="Isle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12401, -5.91353, 33.0299)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Dummy21"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle2/Dummy21"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle2/Dummy21"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy22" type="RigidBody3D" parent="Isle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225186, -5.91353, 38.0229)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Dummy22"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle2/Dummy22"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle2/Dummy22"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy23" type="RigidBody3D" parent="Isle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.51809, -5.91353, 37.1821)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Dummy23"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle2/Dummy23"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle2/Dummy23"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy24" type="RigidBody3D" parent="Isle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.95362, -5.91353, 33.1829)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Dummy24"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle2/Dummy24"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle2/Dummy24"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy25" type="RigidBody3D" parent="Isle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41179, -5.91353, 25.6955)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Dummy25"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle2/Dummy25"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle2/Dummy25"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy26" type="RigidBody3D" parent="Isle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.39515, -5.91353, 25.1285)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Dummy26"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle2/Dummy26"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle2/Dummy26"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
 [node name="Isle3" type="Node3D" parent="."]
 
 [node name="Floor3" type="StaticBody3D" parent="Isle3"]
@@ -297,6 +625,198 @@ mesh = SubResource("CapsuleMesh_f6u0x")
 surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
 
 [node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy17"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy18" type="RigidBody3D" parent="Isle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5153, -2.65083, -2.94301)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Dummy18"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle3/Dummy18"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy18"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy19" type="RigidBody3D" parent="Isle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.0545, -2.65083, -3.91229)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Dummy19"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle3/Dummy19"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy19"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy20" type="RigidBody3D" parent="Isle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5764, -2.65083, -3.89237)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Dummy20"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle3/Dummy20"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy20"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy21" type="RigidBody3D" parent="Isle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6868, -2.65083, 3.05722)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Dummy21"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle3/Dummy21"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy21"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy22" type="RigidBody3D" parent="Isle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.074, -2.65083, 9.49127)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Dummy22"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle3/Dummy22"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy22"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy23" type="RigidBody3D" parent="Isle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8967, -2.65083, 5.14424)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Dummy23"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle3/Dummy23"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy23"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy24" type="RigidBody3D" parent="Isle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6555, -2.65083, 3.47318)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Dummy24"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle3/Dummy24"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy24"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy25" type="RigidBody3D" parent="Isle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.827, -2.65083, 10.7219)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Dummy25"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle3/Dummy25"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy25"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy26" type="RigidBody3D" parent="Isle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9086, -2.65083, 10.5193)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Dummy26"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle3/Dummy26"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy26"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy27" type="RigidBody3D" parent="Isle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0499, -2.65083, 10.3777)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Dummy27"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle3/Dummy27"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy27"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy28" type="RigidBody3D" parent="Isle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6109, -2.65083, 5.6794)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Dummy28"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle3/Dummy28"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy28"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy29" type="RigidBody3D" parent="Isle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.6163, -2.65083, 3.06176)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Dummy29"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle3/Dummy29"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle3/Dummy29"]
 transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
 mesh = SubResource("BoxMesh_3l6qp")
 surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
@@ -363,6 +883,134 @@ transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831
 mesh = SubResource("BoxMesh_3l6qp")
 surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
 
+[node name="Dummy9" type="RigidBody3D" parent="Isle4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1835, 3.12286, 42.0914)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle4/Dummy9"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle4/Dummy9"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle4/Dummy9"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy10" type="RigidBody3D" parent="Isle4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6314, 3.12286, 42.7134)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle4/Dummy10"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle4/Dummy10"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle4/Dummy10"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy11" type="RigidBody3D" parent="Isle4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3779, 3.12286, 42.7853)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle4/Dummy11"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle4/Dummy11"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle4/Dummy11"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy12" type="RigidBody3D" parent="Isle4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0534, 3.12286, 42.7074)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle4/Dummy12"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle4/Dummy12"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle4/Dummy12"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy13" type="RigidBody3D" parent="Isle4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3722, 3.12286, 49.3047)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle4/Dummy13"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle4/Dummy13"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle4/Dummy13"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy14" type="RigidBody3D" parent="Isle4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5223, 3.12286, 49.5142)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle4/Dummy14"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle4/Dummy14"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle4/Dummy14"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy15" type="RigidBody3D" parent="Isle4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7522, 3.12286, 49.6177)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle4/Dummy15"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle4/Dummy15"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle4/Dummy15"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy16" type="RigidBody3D" parent="Isle4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9446, 3.12286, 49.4332)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle4/Dummy16"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle4/Dummy16"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle4/Dummy16"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
 [node name="Isle5" type="Node3D" parent="."]
 
 [node name="Cube3" type="StaticBody3D" parent="Isle5"]
@@ -424,3 +1072,138 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
 transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
 mesh = SubResource("BoxMesh_3l6qp")
 surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy12" type="RigidBody3D" parent="Isle5"]
+transform = Transform3D(0.0431661, 0, -0.999068, 0, 1, 0, 0.999068, 0, 0.0431661, 39.6756, 10.3748, -19.1975)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle5/Dummy12"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle5/Dummy12"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle5/Dummy12"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy13" type="RigidBody3D" parent="Isle5"]
+transform = Transform3D(0.0431661, 0, -0.999068, 0, 1, 0, 0.999068, 0, 0.0431661, 39.9223, 10.3748, -15.2156)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle5/Dummy13"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle5/Dummy13"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle5/Dummy13"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy14" type="RigidBody3D" parent="Isle5"]
+transform = Transform3D(0.0431661, 0, -0.999068, 0, 1, 0, 0.999068, 0, 0.0431661, 40.1435, 10.3748, -10.6815)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle5/Dummy14"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle5/Dummy14"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle5/Dummy14"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy15" type="RigidBody3D" parent="Isle5"]
+transform = Transform3D(0.0431661, 0, -0.999068, 0, 1, 0, 0.999068, 0, 0.0431661, 40.2825, 10.3748, -6.6394)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle5/Dummy15"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle5/Dummy15"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle5/Dummy15"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy16" type="RigidBody3D" parent="Isle5"]
+transform = Transform3D(0.0431661, 0, -0.999068, 0, 1, 0, 0.999068, 0, 0.0431661, 32.9637, 10.3748, -6.77773)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle5/Dummy16"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle5/Dummy16"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle5/Dummy16"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy17" type="RigidBody3D" parent="Isle5"]
+transform = Transform3D(0.0431661, 0, -0.999068, 0, 1, 0, 0.999068, 0, 0.0431661, 32.4249, 10.3748, -18.3032)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle5/Dummy17"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle5/Dummy17"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle5/Dummy17"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy18" type="RigidBody3D" parent="Isle5"]
+transform = Transform3D(0.0431661, 0, -0.999068, 0, 1, 0, 0.999068, 0, 0.0431661, 32.6373, 10.3748, -14.776)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle5/Dummy18"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle5/Dummy18"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle5/Dummy18"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="Dummy19" type="RigidBody3D" parent="Isle5"]
+transform = Transform3D(0.0431661, 0, -0.999068, 0, 1, 0, 0.999068, 0, 0.0431661, 32.9101, 10.3748, -10.2353)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle5/Dummy19"]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="Isle5/Dummy19"]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
+
+[node name="Weapon" type="MeshInstance3D" parent="Isle5/Dummy19"]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+
+[node name="WorldFloor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -47.948, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldFloor"]
+shape = SubResource("WorldBoundaryShape3D_oxxmv")
