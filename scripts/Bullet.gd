@@ -12,4 +12,4 @@ func _ready():
 
 func _physics_process(delta):
 	position += global_transform.basis.z * -SPEED * delta
-	move_and_slide()
+	#move_and_slide()

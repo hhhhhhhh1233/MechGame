@@ -13,8 +13,10 @@ albedo_color = Color(0.698039, 0.133333, 0.27451, 1)
 script = ExtResource("1_2ilgm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_j0bw4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_ty06x")
 surface_material_override/0 = SubResource("StandardMaterial3D_cw0rl")
