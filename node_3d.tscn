@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://t4fbbawj5o62"]
+[gd_scene load_steps=14 format=3 uid="uid://t4fbbawj5o62"]
 
 [ext_resource type="PackedScene" uid="uid://b8cdldlku4sl3" path="res://enemy.tscn" id="1_r8tpu"]
+[ext_resource type="Script" path="res://PlayerCamera.gd" id="2_o7rbo"]
 [ext_resource type="PackedScene" uid="uid://bxpuu3k1gsq1y" path="res://player.tscn" id="2_u2dyu"]
 [ext_resource type="Script" path="res://Health.gd" id="3_4bdik"]
 
@@ -33,6 +34,10 @@ albedo_color = Color(0.156863, 1, 1, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_u2dyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1919, 2.02822, 1.51755)
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+current = true
+script = ExtResource("2_o7rbo")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.384616, 0.686098, -0.617527, -0.362723, 0.727509, 0.582376, 0.848824, 0, 0.528675, -15.1973, 0, 4.36303)
@@ -139,7 +144,6 @@ transform = Transform3D(0.659438, 0, 0.751761, 0, 1, 0, -0.751761, 0, 0.659438, 
 transform = Transform3D(0.228181, 0, 0.973619, 0, 1, 0, -0.973619, 0, 0.228181, 5.15255, 4.44464, -30.9527)
 
 [node name="Island2" type="StaticBody3D" parent="Isle3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Island2"]

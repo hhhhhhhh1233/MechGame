@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxpuu3k1gsq1y"]
+[gd_scene load_steps=10 format=3 uid="uid://bxpuu3k1gsq1y"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_obvt4"]
 
@@ -9,9 +9,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jadye"]
 albedo_color = Color(0.192157, 1, 1, 1)
 
-[sub_resource type="Environment" id="Environment_ugxmx"]
-ssil_enabled = true
-
 [sub_resource type="BoxMesh" id="BoxMesh_3l6qp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0irme"]
@@ -20,6 +17,12 @@ metallic = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_puxis"]
 size = Vector3(1.29617, 1.53812, 1.27092)
+
+[sub_resource type="Environment" id="Environment_ugxmx"]
+ssil_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_64fdo"]
+size = Vector3(9.95506, 6.98384, 14.7303)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -33,10 +36,6 @@ shape = SubResource("CapsuleShape3D_oenme")
 [node name="Body" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_f6u0x")
 surface_material_override/0 = SubResource("StandardMaterial3D_jadye")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.914381, 0.404854, 0, -0.404854, 0.914381, 0.144172, 1.82702, 4.19689)
-environment = SubResource("Environment_ugxmx")
 
 [node name="Weapon" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0552361, 0.329593, -0.0198421)
@@ -53,4 +52,19 @@ shape = SubResource("BoxShape3D_puxis")
 [node name="Gun" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1.54844)
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5.001)
+visible = false
+environment = SubResource("Environment_ugxmx")
+
+[node name="CameraTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
+
+[node name="AutoAimBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09573, -7.35841)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AutoAimBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.546396, 0)
+shape = SubResource("BoxShape3D_64fdo")

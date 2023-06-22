@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 const SPEED = 7.5
 const JUMP_VELOCITY = 6
 const JUMP_ACCEL = 0.1
@@ -9,7 +8,7 @@ const LOOK_ANGLE = 0.8
 const WEIGHT = 0.3
 const SHOOT_DELAY = 0.1
 
-var health = 100
+var health = 999
 
 var shooting = false
 @onready var BULLET = preload("res://bullet.tscn")
@@ -37,6 +36,16 @@ func _physics_process(delta):
 			var bullet =  BULLET.instantiate()
 			#$"..".add_child(bullet)
 			$Gun.add_child(bullet)
+			var enemiesInSight = $AutoAimBox.get_overlapping_bodies()
+			if enemiesInSight:
+				var shortest = enemiesInSight[0]
+				for i in enemiesInSight:
+					if Vector3($Gun.global_position - i.global_position).length() < Vector3($Gun.global_position - shortest.global_position).length():
+						shortest = i
+				#bullet.look_at($AutoAimBox.get_overlapping_bodies()[0].position)
+				print("Should head: ", Vector3(shortest.global_position - $Gun.global_position).normalized())
+				bullet.changeDirection(Vector3(shortest.global_position - $Gun.global_position).normalized())
+				#bullet.set_axis_velocity(Vector3(shortest.global_position - bullet.global_position).normalized() * 50)
 			#bullet.transform = $Gun.transform
 			#bullet.position += bullet.global_transform.basis.z * -1
 			Input.start_joy_vibration(0, 0.1, 0)
