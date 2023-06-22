@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8cdldlku4sl3"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_27d21"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oenme"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f6u0x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gotuq"]
+albedo_color = Color(0.968627, 0.278431, 0.266667, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3l6qp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0iu5"]
+albedo_color = Color(0.384314, 0.0117647, 0.0431373, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vhe6c"]
+size = Vector3(1, 1.5202, 1)
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_27d21")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_oenme")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_f6u0x")
+surface_material_override/0 = SubResource("StandardMaterial3D_gotuq")
+
+[node name="Weapon" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0552361, 0.329593, -0.0198421)
+mesh = SubResource("BoxMesh_3l6qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_b0iu5")
+
+[node name="Area3D" type="Area3D" parent="." groups=["Hurtable"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_vhe6c")
+
+[node name="Gun" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1.54844)

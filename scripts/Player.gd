@@ -9,6 +9,8 @@ const LOOK_ANGLE = 0.8
 const WEIGHT = 0.3
 const SHOOT_DELAY = 0.1
 
+var health = 100
+
 var shooting = false
 @onready var BULLET = preload("res://bullet.tscn")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -18,6 +20,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
+	#print(health)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -32,9 +35,10 @@ func _physics_process(delta):
 		if not shooting:
 			shooting = true
 			var bullet =  BULLET.instantiate()
-			$"..".add_child(bullet)
-			bullet.transform = transform
-			bullet.position += bullet.global_transform.basis.z * -1
+			#$"..".add_child(bullet)
+			$Gun.add_child(bullet)
+			#bullet.transform = $Gun.transform
+			#bullet.position += bullet.global_transform.basis.z * -1
 			Input.start_joy_vibration(0, 0.1, 0)
 			await get_tree().create_timer(SHOOT_DELAY).timeout
 			Input.stop_joy_vibration(0)
@@ -72,3 +76,8 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func decreaseHealth(amount):
+	health -= amount
+	if health <= 0:
+		get_tree().reload_current_scene()

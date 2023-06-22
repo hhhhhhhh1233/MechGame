@@ -1,21 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://c67bhbogque3n"]
+[gd_scene load_steps=23 format=3 uid="uid://c67bhbogque3n"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_17ny0"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oenme"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_f6u0x"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jadye"]
-albedo_color = Color(0.192157, 1, 1, 1)
-
-[sub_resource type="Environment" id="Environment_ugxmx"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_3l6qp"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0irme"]
-albedo_color = Color(0.235294, 0.854902, 0.835294, 1)
-metallic = 1.0
+[ext_resource type="PackedScene" uid="uid://bxpuu3k1gsq1y" path="res://player.tscn" id="1_biqih"]
+[ext_resource type="PackedScene" uid="uid://ogpib441oicx" path="res://dummy.tscn" id="2_vrufr"]
+[ext_resource type="PackedScene" uid="uid://b8cdldlku4sl3" path="res://enemy.tscn" id="3_mj41r"]
+[ext_resource type="Script" path="res://Health.gd" id="4_xgu6v"]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_qmdiv"]
 map_width = 21
@@ -35,8 +23,18 @@ albedo_color = Color(1, 1, 0.25098, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3471"]
 size = Vector3(10.9923, 6.00461, 6.2363)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oenme"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f6u0x"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkuqo"]
 albedo_color = Color(0.184314, 1, 0.156863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3l6qp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0irme"]
+albedo_color = Color(0.235294, 0.854902, 0.835294, 1)
+metallic = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve7w0"]
 albedo_color = Color(0.372549, 0.352941, 1, 1)
@@ -60,26 +58,8 @@ size = Vector3(1, 0.314947, 2.19198)
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85182, -0.667975, 2.33417)
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48414, 0)
-script = ExtResource("1_17ny0")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_oenme")
-
-[node name="Body" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("CapsuleMesh_f6u0x")
-surface_material_override/0 = SubResource("StandardMaterial3D_jadye")
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.914381, 0.404854, 0, -0.404854, 0.914381, 0.144172, 1.82702, 4.19689)
-environment = SubResource("Environment_ugxmx")
-
-[node name="Weapon" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0552361, 0.329593, -0.0198421)
-mesh = SubResource("BoxMesh_3l6qp")
-surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+[node name="Player" parent="." instance=ExtResource("1_biqih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71475, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.636913, 0, -0.770936, 0.546094, 0.705859, 0.451159, 0.544172, -0.708352, 0.449571, -6.94989, 4.65755, 6.10964)
@@ -88,6 +68,7 @@ shadow_enabled = true
 [node name="Isle" type="Node3D" parent="."]
 
 [node name="Floor" type="StaticBody3D" parent="Isle"]
+collision_mask = 14
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Isle/Floor"]
 shape = SubResource("HeightMapShape3D_qmdiv")
@@ -100,6 +81,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ko1ra")
 
 [node name="Cube" type="StaticBody3D" parent="Isle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.49626, 0, -7.87322)
+collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Isle/Cube"]
@@ -110,21 +92,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ivyno")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Isle/Cube"]
 shape = SubResource("BoxShape3D_r3471")
 
-[node name="Dummy" type="RigidBody3D" parent="Isle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0611, 5.91914, -7.07987)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Isle/Dummy"]
-shape = SubResource("CapsuleShape3D_oenme")
-
-[node name="Body" type="MeshInstance3D" parent="Isle/Dummy"]
-mesh = SubResource("CapsuleMesh_f6u0x")
-surface_material_override/0 = SubResource("StandardMaterial3D_qkuqo")
-
-[node name="Weapon" type="MeshInstance3D" parent="Isle/Dummy"]
-transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831, 0.310117, 0.0564423)
-mesh = SubResource("BoxMesh_3l6qp")
-surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
+[node name="Dummy" parent="Isle" instance=ExtResource("2_vrufr")]
 
 [node name="Dummy2" type="RigidBody3D" parent="Isle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.58176, 5.91914, -7.25643)
@@ -318,10 +286,23 @@ transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831
 mesh = SubResource("BoxMesh_3l6qp")
 surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
 
+[node name="Enemy" parent="Isle" instance=ExtResource("3_mj41r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.837578, 1.68847, -3.8024)
+
+[node name="Enemy2" parent="Isle" instance=ExtResource("3_mj41r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.73986, 1.68847, 4.25623)
+
+[node name="Enemy3" parent="Isle" instance=ExtResource("3_mj41r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56546, 1.68847, 7.30707)
+
+[node name="Enemy4" parent="Isle" instance=ExtResource("3_mj41r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.78677, 1.68847, -7.58826)
+
 [node name="Isle2" type="Node3D" parent="."]
 
 [node name="Floor2" type="StaticBody3D" parent="Isle2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.801, -7.03533, 33.3431)
+collision_mask = 14
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Isle2/Floor2"]
 shape = SubResource("HeightMapShape3D_qmdiv")
@@ -572,10 +553,20 @@ transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0422831
 mesh = SubResource("BoxMesh_3l6qp")
 surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
 
+[node name="Enemy" parent="Isle2" instance=ExtResource("3_mj41r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.00816, -5.45775, 39.6915)
+
+[node name="Enemy2" parent="Isle2" instance=ExtResource("3_mj41r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.928707, -5.45775, 35.5584)
+
+[node name="Enemy3" parent="Isle2" instance=ExtResource("3_mj41r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7402, -5.45775, 30.122)
+
 [node name="Isle3" type="Node3D" parent="."]
 
 [node name="Floor3" type="StaticBody3D" parent="Isle3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7229, -4.31983, 3.39619)
+collision_mask = 14
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Isle3/Floor3"]
 shape = SubResource("HeightMapShape3D_qmdiv")
@@ -830,6 +821,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
 
 [node name="Cube2" type="StaticBody3D" parent="Isle4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4328, 0, 46.0122)
+collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Isle4/Cube2"]
@@ -1020,6 +1012,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
 
 [node name="Cube3" type="StaticBody3D" parent="Isle5"]
 transform = Transform3D(0.0431661, 0, -0.999068, 0, 1, 0, 0.999068, 0, 0.0431661, 36.9249, 7.25194, -12.3475)
+collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Isle5/Cube3"]
@@ -1208,6 +1201,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
 
 [node name="WorldFloor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -47.948, 0)
+collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldFloor"]
@@ -1215,6 +1209,7 @@ shape = SubResource("WorldBoundaryShape3D_oxxmv")
 
 [node name="Platform" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.892, 1.51794, -7.68349)
+collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platform"]
@@ -1227,6 +1222,7 @@ shape = SubResource("BoxShape3D_c7rbb")
 
 [node name="Platform2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0774, 2.60493, -7.68349)
+collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platform2"]
@@ -1239,6 +1235,7 @@ shape = SubResource("BoxShape3D_c7rbb")
 
 [node name="Platform3" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5076, 3.66531, -7.68349)
+collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platform3"]
@@ -1251,6 +1248,7 @@ shape = SubResource("BoxShape3D_c7rbb")
 
 [node name="Platform4" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5394, 5.21362, -7.68349)
+collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platform4"]
@@ -1263,6 +1261,7 @@ shape = SubResource("BoxShape3D_c7rbb")
 
 [node name="Platform5" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2603, 6.71847, -7.68349)
+collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platform5"]
@@ -1275,6 +1274,7 @@ shape = SubResource("BoxShape3D_c7rbb")
 
 [node name="Platform6" type="StaticBody3D" parent="."]
 transform = Transform3D(0.805639, 0, 0.592407, 0, 1, 0, -0.592407, 0, 0.805639, 19.8818, -6.20833, 18.1654)
+collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platform6"]
@@ -1284,3 +1284,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ci1g8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform6"]
 shape = SubResource("BoxShape3D_c7rbb")
+
+[node name="Health" type="RichTextLabel" parent="."]
+offset_left = 54.0
+offset_top = 17.0
+offset_right = 135.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 36
+text = "100"
+script = ExtResource("4_xgu6v")
