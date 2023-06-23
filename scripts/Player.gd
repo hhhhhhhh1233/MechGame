@@ -8,6 +8,8 @@ const LOOK_ANGLE = 0.8
 const WEIGHT = 0.3
 const SHOOT_DELAY = 0.1
 
+var sensitivity = 0.0005
+
 var health = 999
 
 var shooting = false
@@ -91,3 +93,17 @@ func decreaseHealth(amount):
 	health -= amount
 	if health <= 0:
 		get_tree().reload_current_scene()
+		
+func _input(event):
+	if !visible:
+		return
+	if event is InputEventMouseMotion:
+		rotation.x += event.relative.y * sensitivity * -1 * LOOK_SPEED
+		if rotation.x > LOOK_ANGLE:
+			rotation.x = LOOK_ANGLE
+		if rotation.x < -LOOK_ANGLE:
+			rotation.x = -LOOK_ANGLE
+		rotation.y += event.relative.x * sensitivity * -1 * LOOK_SPEED
+		#rotate_x()
+		#rotate_y()
+		#camera.rotation.x = clampf(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
