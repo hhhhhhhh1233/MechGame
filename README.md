@@ -3,11 +3,12 @@
 ## Todo
 - [ ] Player
   - [x] Movement
-  - [ ] Health
+  - [x] Health
   - [ ] Modularity
+  - [x] Auto Aim
 - [ ] Enemies
   - [x] Attacking Player
   - [ ] Movement
-  - [ ] Taking Damage
+  - [x] Taking Damage
 - [ ] Store
 - [ ] Missions 
