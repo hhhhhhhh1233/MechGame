@@ -29,25 +29,26 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		
+	
+	var enemiesInSight = $AutoAimBox.get_overlapping_bodies()
+	var shortest
+	if enemiesInSight:
+		shortest = enemiesInSight[0]
+		for i in enemiesInSight:
+			if Vector3($Gun.global_position - i.global_position).length() < Vector3($Gun.global_position - shortest.global_position).length():
+				shortest = i
+		$EnemyHighlight.global_position = shortest.global_position + Vector3(0,2,0)
+		$EnemyHighlight.show()
+	else:
+		$EnemyHighlight.hide()
+	
 	if Input.is_action_pressed("shoot"):
 		if not shooting:
 			shooting = true
 			var bullet =  BULLET.instantiate()
-			#$"..".add_child(bullet)
 			$Gun.add_child(bullet)
-			var enemiesInSight = $AutoAimBox.get_overlapping_bodies()
 			if enemiesInSight:
-				var shortest = enemiesInSight[0]
-				for i in enemiesInSight:
-					if Vector3($Gun.global_position - i.global_position).length() < Vector3($Gun.global_position - shortest.global_position).length():
-						shortest = i
-				#bullet.look_at($AutoAimBox.get_overlapping_bodies()[0].position)
-				print("Should head: ", Vector3(shortest.global_position - $Gun.global_position).normalized())
 				bullet.changeDirection(Vector3(shortest.global_position - $Gun.global_position).normalized())
-				#bullet.set_axis_velocity(Vector3(shortest.global_position - bullet.global_position).normalized() * 50)
-			#bullet.transform = $Gun.transform
-			#bullet.position += bullet.global_transform.basis.z * -1
 			Input.start_joy_vibration(0, 0.1, 0)
 			await get_tree().create_timer(SHOOT_DELAY).timeout
 			Input.stop_joy_vibration(0)

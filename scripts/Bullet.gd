@@ -21,11 +21,9 @@ func _ready():
 #	move_and_slide()
 
 func changeDirection(dir):
-	print("Is heading before: ", linear_velocity.normalized())
 	#set_axis_velocity(dir)
 	constant_force = Vector3.ZERO
 	add_constant_central_force(dir * SPEED)
-	print("Is heading after: ", linear_velocity.normalized())
 
 func _on_area_3d_body_entered(body):
 	if body.collision_layer == 2 or body.collision_layer == 4:

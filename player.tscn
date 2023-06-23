@@ -1,6 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxpuu3k1gsq1y"]
+[gd_scene load_steps=12 format=3 uid="uid://bxpuu3k1gsq1y"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_obvt4"]
+[ext_resource type="Texture2D" uid="uid://btdlbttlsiuyv" path="res://border.png" id="2_w8t8a"]
+[ext_resource type="Texture2D" uid="uid://yjkap6pcevlm" path="res://EnemyHighlight.png" id="3_f0drx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oenme"]
 
@@ -22,7 +24,7 @@ size = Vector3(1.29617, 1.53812, 1.27092)
 ssil_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_64fdo"]
-size = Vector3(9.95506, 6.98384, 14.7303)
+size = Vector3(6, 5, 15)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -42,11 +44,11 @@ transform = Transform3D(1.82362, 0, 0, 0, 0.343462, 0, 0, 0, 0.463453, 0.0552361
 mesh = SubResource("BoxMesh_3l6qp")
 surface_material_override/0 = SubResource("StandardMaterial3D_0irme")
 
-[node name="Area3D" type="Area3D" parent="." groups=["Hurtable"]]
+[node name="Hitbox" type="Area3D" parent="." groups=["Hurtable"]]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("BoxShape3D_puxis")
 
 [node name="Gun" type="Node3D" parent="."]
@@ -61,10 +63,27 @@ environment = SubResource("Environment_ugxmx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
 
 [node name="AutoAimBox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09573, -7.35841)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34839, -8.10501)
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AutoAimBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.546396, 0)
 shape = SubResource("BoxShape3D_64fdo")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="AutoAimBox"]
+transform = Transform3D(0.873347, 0, 0.487098, 0, 1, 0, -0.487098, 0, 0.873347, -3.28036, 0.546396, 0.224039)
+shape = SubResource("BoxShape3D_64fdo")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="AutoAimBox"]
+transform = Transform3D(0.902089, 0, -0.431551, 0, 1, 0, 0.431551, 0, 0.902089, 2.97085, 0.546396, 0)
+shape = SubResource("BoxShape3D_64fdo")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.146494, 0, 0, 0, 0.121186, 0, 0, 0, 1, 0.00536683, 1.87573, -0.621973)
+texture = ExtResource("2_w8t8a")
+
+[node name="EnemyHighlight" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 1.91177, 0)
+visible = false
+texture = ExtResource("3_f0drx")

@@ -19,8 +19,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	look_at(player.position)
-
-	if not shooting:
+	if not shooting and $RayCast3D.is_colliding():
 		shooting = true
 		var bullet = BULLET.instantiate()
 		$Gun.add_child(bullet)
