@@ -1,7 +1,7 @@
 extends Node
 
-@onready var BLASTER_BULLET = preload("res://bullet.tscn")
-@onready var RAPID_BULLET = preload("res://strong_bullet.tscn")
+@onready var BLASTER_BULLET = preload("res://scenes/bullet.tscn")
+@onready var RAPID_BULLET = preload("res://scenes/strong_bullet.tscn")
 
 var cash = 200
 

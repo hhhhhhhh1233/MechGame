@@ -72,4 +72,4 @@ func on_garage_item_selection(id: int, menu: Object, category: Array):
 	menu.text = menu.get_popup().get_item_text(id)
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

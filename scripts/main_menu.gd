@@ -8,7 +8,7 @@ func _ready():
 
 
 func _on_garage_pressed():
-	get_tree().change_scene_to_file("res://control.tscn")
+	get_tree().change_scene_to_file("res://scenes/control.tscn")
 
 
 func _on_quit_pressed():
@@ -16,4 +16,4 @@ func _on_quit_pressed():
 
 
 func _on_bounty_1_pressed():
-	get_tree().change_scene_to_file("res://test_world.tscn")
+	get_tree().change_scene_to_file("res://scenes/test_world.tscn")

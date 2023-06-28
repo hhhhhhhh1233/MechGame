@@ -4,7 +4,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const SHOOT_DELAY = 1
-@onready var BULLET = preload("res://bullet.tscn")
+@onready var BULLET = preload("res://scenes/strong_bullet.tscn")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 #@onready var player = 

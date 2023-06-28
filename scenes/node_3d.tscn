@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://t4fbbawj5o62"]
 
-[ext_resource type="PackedScene" uid="uid://b8cdldlku4sl3" path="res://enemy.tscn" id="1_r8tpu"]
-[ext_resource type="PackedScene" uid="uid://bxpuu3k1gsq1y" path="res://player.tscn" id="2_u2dyu"]
-[ext_resource type="PackedScene" uid="uid://dyw07ck24medd" path="res://player_camera.tscn" id="2_uxko0"]
-[ext_resource type="PackedScene" uid="uid://xkldu6k6j0rc" path="res://health_gui.tscn" id="3_mldlj"]
+[ext_resource type="PackedScene" uid="uid://b8cdldlku4sl3" path="res://scenes/enemy.tscn" id="1_r8tpu"]
+[ext_resource type="PackedScene" uid="uid://bxpuu3k1gsq1y" path="res://scenes/player.tscn" id="2_u2dyu"]
+[ext_resource type="PackedScene" uid="uid://dyw07ck24medd" path="res://scenes/player_camera.tscn" id="2_uxko0"]
+[ext_resource type="PackedScene" uid="uid://xkldu6k6j0rc" path="res://scenes/health_gui.tscn" id="3_mldlj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c7qyg"]
 size = Vector3(35.3279, 0.108616, 24.0809)

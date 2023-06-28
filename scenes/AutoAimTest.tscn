@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdch6t3hqrstl"]
 
-[ext_resource type="Script" path="res://PlayerCamera.gd" id="1_4vdje"]
-[ext_resource type="PackedScene" uid="uid://b8cdldlku4sl3" path="res://enemy.tscn" id="2_lavge"]
-[ext_resource type="PackedScene" uid="uid://bxpuu3k1gsq1y" path="res://player.tscn" id="3_7pxrb"]
+[ext_resource type="Script" path="res://scripts/PlayerCamera.gd" id="1_brtye"]
+[ext_resource type="PackedScene" uid="uid://b8cdldlku4sl3" path="res://scenes/enemy.tscn" id="2_lavge"]
+[ext_resource type="PackedScene" uid="uid://bxpuu3k1gsq1y" path="res://scenes/player.tscn" id="3_7pxrb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fbib6"]
 size = Vector3(10, 0.5, 10)
@@ -23,7 +23,7 @@ shape = SubResource("BoxShape3D_fbib6")
 mesh = SubResource("BoxMesh_txn0w")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-script = ExtResource("1_4vdje")
+script = ExtResource("1_brtye")
 
 [node name="Enemy" parent="." instance=ExtResource("2_lavge")]
 

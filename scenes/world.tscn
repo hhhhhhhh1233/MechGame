@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3 uid="uid://c67bhbogque3n"]
 
-[ext_resource type="PackedScene" uid="uid://bxpuu3k1gsq1y" path="res://player.tscn" id="1_biqih"]
-[ext_resource type="PackedScene" uid="uid://ogpib441oicx" path="res://dummy.tscn" id="2_vrufr"]
-[ext_resource type="PackedScene" uid="uid://b8cdldlku4sl3" path="res://enemy.tscn" id="3_mj41r"]
-[ext_resource type="Script" path="res://Health.gd" id="4_xgu6v"]
+[ext_resource type="PackedScene" uid="uid://bxpuu3k1gsq1y" path="res://scenes/player.tscn" id="1_biqih"]
+[ext_resource type="PackedScene" uid="uid://ogpib441oicx" path="res://scenes/dummy.tscn" id="2_vrufr"]
+[ext_resource type="PackedScene" uid="uid://b8cdldlku4sl3" path="res://scenes/enemy.tscn" id="3_mj41r"]
+[ext_resource type="Script" path="res://scripts/Health.gd" id="4_spqig"]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_qmdiv"]
 map_width = 21
@@ -1292,4 +1292,4 @@ offset_right = 135.0
 offset_bottom = 73.0
 theme_override_font_sizes/normal_font_size = 36
 text = "100"
-script = ExtResource("4_xgu6v")
+script = ExtResource("4_spqig")
