@@ -52,8 +52,11 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 		
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and $RayCast3D.is_colliding():#is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		$RayCast3D.enabled = false
+		await get_tree().create_timer(0.2).timeout
+		$RayCast3D.enabled = true
 	
 	var enemiesInSight = $AutoAimBox.get_overlapping_bodies()
 	var shortest
@@ -88,10 +91,13 @@ func _physics_process(delta):
 
 	# Handle Jump.
 	if Input.is_action_pressed("fly"):
+		$RayCast3D.enabled = false
 		Input.start_joy_vibration(0, 0, 0.1, 0.2)
 		velocity.y += BOOST_VELOCITY * BOOST_ACCELERATION - WEIGHT
 		if velocity.y > BOOST_VELOCITY:
 			velocity.y = BOOST_VELOCITY
+	if Input.is_action_just_released("fly"):
+		$RayCast3D.enabled = true
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -102,9 +108,22 @@ func _physics_process(delta):
 		rotation.x += -look_dir.y * delta * LOOK_SPEED
 		if rotation.x > LOOK_ANGLE:
 			rotation.x = LOOK_ANGLE
-		if rotation.x < -LOOK_ANGLE:
+		elif rotation.x < -LOOK_ANGLE:
 			rotation.x = -LOOK_ANGLE
+		else:
+			$RayCast3D.rotation.x -= -look_dir.y * delta * LOOK_SPEED
 		rotation.y += -look_dir.x * delta * LOOK_SPEED
+	
+	if $RayCast3D.is_colliding():
+		var springStrength = 15
+		var springDamping = 5
+		
+		var x = 3
+		var length = Vector3($RayCast3D.get_collision_point() - position).length()
+		var offset = x - length
+		
+		velocity.y += (springStrength * offset - velocity.y * springDamping) * delta
+		
 	
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:

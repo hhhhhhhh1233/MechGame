@@ -27,12 +27,12 @@ func _ready():
 	weapons = [Blaster, Rapid_fire]
 	weapon = weapons[0]
 
-	Walker = Legs.new(7.5, 0.2, 6)
-	Skater = Legs.new(10, 0.3, 7)
+	Walker = Legs.new(7.5, 0.2, 8)
+	Skater = Legs.new(10, 0.3, 10)
 	legs = [Walker, Skater]
 	leg = legs[0]
 	
-	Default_booster = Booster.new(6, 0.1, 0.1)
+	Default_booster = Booster.new(7, 0.1, 0.1)
 	Fast_booster = Booster.new(10, 0.2, 0.15)
 	boosters = [Default_booster, Fast_booster]
 	booster = boosters[0]

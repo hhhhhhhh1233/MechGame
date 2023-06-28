@@ -91,3 +91,6 @@ texture = ExtResource("2_w8t8a")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 1.91177, 0)
 visible = false
 texture = ExtResource("3_f0drx")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -3, 0)
