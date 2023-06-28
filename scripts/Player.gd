@@ -13,7 +13,10 @@ var sensitivity = 0.0005
 var health = 999
 
 var shooting = false
+
 @onready var BULLET = preload("res://bullet.tscn")
+@onready var STRONG_BULLET = preload("res://strong_bullet.tscn")
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
@@ -47,7 +50,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("shoot"):
 		if not shooting:
 			shooting = true
-			var bullet =  BULLET.instantiate()
+			var bullet = STRONG_BULLET.instantiate()# BULLET.instantiate()
 			$Gun.add_child(bullet)
 			if enemiesInSight:
 				bullet.changeDirection(Vector3(shortest.global_position - $Gun.global_position).normalized())
@@ -57,7 +60,10 @@ func _physics_process(delta):
 			shooting = false
 
 	if Input.is_action_just_pressed("pause"):
-		get_tree().quit()
+		get_tree().paused = true
+		$"../PauseText".show()
+		$"../PauseMenu".show()
+		$"../PauseMenu".set_focused_item(0)
 
 	# Handle Jump.
 	if Input.is_action_pressed("fly"):

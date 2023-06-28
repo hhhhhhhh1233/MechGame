@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://t4fbbawj5o62"]
 
 [ext_resource type="PackedScene" uid="uid://b8cdldlku4sl3" path="res://enemy.tscn" id="1_r8tpu"]
-[ext_resource type="Script" path="res://PlayerCamera.gd" id="2_o7rbo"]
 [ext_resource type="PackedScene" uid="uid://bxpuu3k1gsq1y" path="res://player.tscn" id="2_u2dyu"]
-[ext_resource type="Script" path="res://Health.gd" id="3_4bdik"]
+[ext_resource type="PackedScene" uid="uid://dyw07ck24medd" path="res://player_camera.tscn" id="2_uxko0"]
+[ext_resource type="PackedScene" uid="uid://xkldu6k6j0rc" path="res://health_gui.tscn" id="3_mldlj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c7qyg"]
 size = Vector3(35.3279, 0.108616, 24.0809)
@@ -35,21 +35,12 @@ albedo_color = Color(0.156863, 1, 1, 1)
 [node name="Player" parent="." instance=ExtResource("2_u2dyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1919, 2.02822, 1.51755)
 
-[node name="PlayerCamera" type="Camera3D" parent="."]
-current = true
-script = ExtResource("2_o7rbo")
+[node name="PlayerCamera" parent="." instance=ExtResource("2_uxko0")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.384616, 0.686098, -0.617527, -0.362723, 0.727509, 0.582376, 0.848824, 0, 0.528675, -15.1973, 0, 4.36303)
 
-[node name="Health" type="RichTextLabel" parent="."]
-offset_left = 54.0
-offset_top = 17.0
-offset_right = 135.0
-offset_bottom = 73.0
-theme_override_font_sizes/normal_font_size = 36
-text = "100"
-script = ExtResource("3_4bdik")
+[node name="Health" parent="." instance=ExtResource("3_mldlj")]
 
 [node name="Isle" type="Node3D" parent="."]
 

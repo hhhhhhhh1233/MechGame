@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckk51uwfak8vv"]
+
+[ext_resource type="Script" path="res://StrongBullet.gd" id="1_0mmhn"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_23jq5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6yw7"]
+albedo_color = Color(0, 0.654902, 0.27451, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6jto6"]
+radius = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4nbh"]
+radius = 0.848907
+
+[node name="StrongBullet" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 7
+gravity_scale = 0.0
+continuous_cd = true
+script = ExtResource("1_0mmhn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_23jq5")
+surface_material_override/0 = SubResource("StandardMaterial3D_j6yw7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6jto6")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_g4nbh")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

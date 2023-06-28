@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyw07ck24medd"]
+
+[ext_resource type="Script" path="res://PlayerCamera.gd" id="1_2mlwj"]
+
+[node name="PlayerCamera" type="Camera3D"]
+cull_mask = 1048573
+current = true
+script = ExtResource("1_2mlwj")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://xkldu6k6j0rc"]
+
+[ext_resource type="Script" path="res://Health.gd" id="1_gxxqm"]
+
+[node name="Health" type="RichTextLabel"]
+offset_left = 54.0
+offset_top = 17.0
+offset_right = 135.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 36
+text = "100"
+script = ExtResource("1_gxxqm")
