@@ -14,7 +14,7 @@ var BOOST_ACCELERATION = 0.1
 
 var sensitivity = 0.0005
 
-var health = 20
+var health = 250
 
 var shooting = false
 
