@@ -1,6 +1,6 @@
 class_name Weapon
 
-var bullet
+var bullet: Object
 var shoot_delay: float
 var weight: float
 

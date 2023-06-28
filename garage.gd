@@ -77,4 +77,4 @@ func _on_leg_menu_id_pressed(id):
 
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://test_world.tscn")
+	get_tree().change_scene_to_file("res://main_menu.tscn")

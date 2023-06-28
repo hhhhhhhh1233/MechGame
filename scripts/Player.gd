@@ -84,6 +84,7 @@ func _physics_process(delta):
 		$"../PauseText".show()
 		$"../PauseMenu".show()
 		$"../PauseMenu".set_focused_item(0)
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	# Handle Jump.
 	if Input.is_action_pressed("fly"):
