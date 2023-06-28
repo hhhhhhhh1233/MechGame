@@ -51,7 +51,7 @@ grow_horizontal = 0
 grow_vertical = 2
 focus_neighbor_left = NodePath("../Garage")
 theme_override_font_sizes/font_size = 32
-text = "Bounty 1 - $1000"
+text = "Gang Bounty - $100"
 
 [node name="Bounty2" type="Button" parent="."]
 layout_mode = 1
@@ -68,7 +68,8 @@ grow_horizontal = 0
 grow_vertical = 2
 focus_neighbor_left = NodePath("../Garage")
 theme_override_font_sizes/font_size = 32
-text = "Bounty 2 - $2000"
+disabled = true
+text = "Bounty 2 - $200"
 
 [node name="Bounty3" type="Button" parent="."]
 layout_mode = 1
@@ -85,7 +86,8 @@ grow_horizontal = 0
 grow_vertical = 2
 focus_neighbor_left = NodePath("../Garage")
 theme_override_font_sizes/font_size = 32
-text = "Bounty 3 - $3000"
+disabled = true
+text = "Bounty 3 - $300"
 
 [node name="Garage" type="Button" parent="."]
 layout_mode = 1
