@@ -1,6 +1,6 @@
 extends Control
 
-var player_loadout
+var player_loadout: Object
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +22,40 @@ func _ready():
 	$LegMenu.text = $LegMenu.get_popup().get_item_text(0)
 	
 	player_loadout = get_node("/root/PlayerLoadout")
+	
+	for i in range(2):
+		if not player_loadout.weapons[i].owned:
+			$WeaponMenu.get_popup().set_item_text(i, ("[$%d] " % (i*100)) + player_loadout.weapons[i].name)
+			$WeaponMenu.get_popup().set_item_as_radio_checkable(i, false)
+		else:
+			$WeaponMenu.get_popup().set_item_text(i, player_loadout.weapons[i].name)
+			$WeaponMenu.get_popup().set_item_as_radio_checkable(i, true)
+			
+		if not player_loadout.boosters[i].owned:
+			$BoosterMenu.get_popup().set_item_text(i, ("[$%d] " % (i*100)) + player_loadout.boosters[i].name)
+			$BoosterMenu.get_popup().set_item_as_radio_checkable(i, false)
+		else:
+			$BoosterMenu.get_popup().set_item_text(i, player_loadout.boosters[i].name)
+			$BoosterMenu.get_popup().set_item_as_radio_checkable(i, true)
+		
+		if not player_loadout.legs[i].owned:
+			$LegMenu.get_popup().set_item_text(i, ("[$%d] " % (i*100)) + player_loadout.legs[i].name)
+			$LegMenu.get_popup().set_item_as_radio_checkable(i, false)
+		else:
+			$LegMenu.get_popup().set_item_text(i, player_loadout.legs[i].name)
+			$LegMenu.get_popup().set_item_as_radio_checkable(i, true)
+		
+	$WeaponMenu.text = player_loadout.weapon.name
+	$BoosterMenu.text = player_loadout.booster.name
+	$LegMenu.text = player_loadout.leg.name
+	
+	for i in range($WeaponMenu.item_count):
+		$WeaponMenu.get_popup().set_item_checked(i, false)
+		$BoosterMenu.get_popup().set_item_checked(i, false)
+		$LegMenu.get_popup().set_item_checked(i, false)
+	$WeaponMenu.get_popup().set_item_checked(player_loadout.weapon.id, true)
+	$BoosterMenu.get_popup().set_item_checked(player_loadout.booster.id, true)
+	$LegMenu.get_popup().set_item_checked(player_loadout.leg.id, true)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -31,10 +65,11 @@ func _process(_delta):
 	$ColorRect/Label.text = "$" + str(player_loadout.cash)
 
 func _on_weapon_menu_id_pressed(id):
-	if $WeaponMenu.get_popup().get_item_text(id)[0] == "[":
+	if not player_loadout.weapons[id].owned:
 		if player_loadout.cash >= id*100:
-			$WeaponMenu.get_popup().set_item_text(id, $WeaponMenu.get_popup().get_item_text(id).lstrip("[$" + str(id*100) + "] "))
+			$WeaponMenu.get_popup().set_item_text(id, player_loadout.weapons[id].name)
 			$WeaponMenu.get_popup().set_item_as_radio_checkable(id, true)
+			player_loadout.weapons[id].owned = true
 			player_loadout.cash -= id*100
 		else:
 			return
@@ -46,10 +81,11 @@ func _on_weapon_menu_id_pressed(id):
 	player_loadout.weapon = player_loadout.weapons[id]
 	
 func _on_booster_menu_id_pressed(id):
-	if $BoosterMenu.get_popup().get_item_text(id)[0] == "[":
+	if not player_loadout.boosters[id].owned:
 		if player_loadout.cash >= id*100:
-			$BoosterMenu.get_popup().set_item_text(id, $BoosterMenu.get_popup().get_item_text(id).lstrip("[$" + str(id*100) + "] "))
+			$BoosterMenu.get_popup().set_item_text(id, player_loadout.boosters[id].name)
 			$BoosterMenu.get_popup().set_item_as_radio_checkable(id, true)
+			player_loadout.boosters[id].owned = true
 			player_loadout.cash -= id*100
 		else:
 			return
@@ -61,10 +97,11 @@ func _on_booster_menu_id_pressed(id):
 	player_loadout.booster = player_loadout.boosters[id]
 
 func _on_leg_menu_id_pressed(id):
-	if $LegMenu.get_popup().get_item_text(id)[0] == "[":
+	if not player_loadout.legs[id].owned:
 		if player_loadout.cash >= id*100:
-			$LegMenu.get_popup().set_item_text(id, $LegMenu.get_popup().get_item_text(id).lstrip("[$" + str(id*100) + "] "))
+			$LegMenu.get_popup().set_item_text(id, player_loadout.legs[id].name)
 			$LegMenu.get_popup().set_item_as_radio_checkable(id, true)
+			player_loadout.legs[id].owned = true
 			player_loadout.cash -= id*100
 		else:
 			return
