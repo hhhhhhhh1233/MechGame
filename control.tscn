@@ -33,8 +33,7 @@ popup/item_0/text = "Blaster"
 popup/item_0/checkable = 2
 popup/item_0/checked = true
 popup/item_0/id = 0
-popup/item_1/text = "Rapid Fire"
-popup/item_1/checkable = 2
+popup/item_1/text = "[$100] Rapid Fire"
 popup/item_1/id = 1
 popup/item_2/text = "Charge Blast"
 popup/item_2/checkable = 2
@@ -72,11 +71,9 @@ popup/item_0/text = "Default Booster"
 popup/item_0/checkable = 2
 popup/item_0/checked = true
 popup/item_0/id = 0
-popup/item_1/text = "Charge Jump"
-popup/item_1/checkable = 2
+popup/item_1/text = "[$100] Fast Booster"
 popup/item_1/id = 1
-popup/item_1/disabled = true
-popup/item_2/text = "Fast Booster"
+popup/item_2/text = "Charge Jump"
 popup/item_2/checkable = 2
 popup/item_2/id = 2
 popup/item_2/disabled = true
@@ -107,14 +104,12 @@ focus_mode = 2
 text = "LEGS"
 flat = false
 item_count = 5
-popup/item_0/text = "Legs"
+popup/item_0/text = "Walker"
 popup/item_0/checkable = 2
 popup/item_0/checked = true
 popup/item_0/id = 0
-popup/item_1/text = "Skater"
-popup/item_1/checkable = 2
+popup/item_1/text = "[$100] Skater"
 popup/item_1/id = 1
-popup/item_1/disabled = true
 popup/item_2/text = "Treads"
 popup/item_2/checkable = 2
 popup/item_2/id = 2
@@ -142,5 +137,23 @@ offset_bottom = 154.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Finish Build"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 516.0
+offset_right = 231.0
+offset_bottom = 610.0
+color = Color(0.113725, 0.00784314, 0.0745098, 1)
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 42.0
+offset_right = 156.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 32
+text = "$500"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
