@@ -316,10 +316,15 @@ transform = Transform3D(0.596915, -0.628931, 0.498135, 0.253557, 0.73694, 0.6266
 shadow_enabled = true
 
 [node name="Health" parent="." instance=ExtResource("3_cxm0t")]
+offset_left = 46.0
+offset_top = 35.0
+offset_right = 309.0
+offset_bottom = 157.0
+theme_override_font_sizes/normal_font_size = 57
 
 [node name="PauseMenu" type="PopupMenu" parent="."]
 process_mode = 3
-position = Vector2i(84, 483)
+position = Vector2i(80, 905)
 size = Vector2i(116, 100)
 item_count = 3
 item_0/text = "Resume"
@@ -332,10 +337,17 @@ script = ExtResource("5_nti7i")
 
 [node name="PauseText" type="ColorRect" parent="."]
 visible = false
-offset_left = 399.0
-offset_top = 223.0
-offset_right = 914.0
-offset_bottom = 394.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.5
+offset_top = -85.5
+offset_right = 257.5
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="Label" type="Label" parent="PauseText"]
