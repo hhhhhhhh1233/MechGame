@@ -786,7 +786,6 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.172549, 0.0156863, 0.0392157, 1)
-metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0

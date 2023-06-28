@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+signal died
 
 var SPEED = 7.5
 var JUMP_VELOCITY = 6
@@ -14,7 +14,7 @@ var BOOST_ACCELERATION = 0.1
 
 var sensitivity = 0.0005
 
-var health = 500
+var health = 20
 
 var shooting = false
 
@@ -138,7 +138,12 @@ func _physics_process(delta):
 func decreaseHealth(amount):
 	health -= amount
 	if health <= 0:
-		get_tree().reload_current_scene()
+		died.emit()
+		queue_free()
+		
+		#await get_tree().create_timer(3).timeout
+		#player_loadout.cash -= 100
+		#get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		
 func _input(event):
 	if !visible:

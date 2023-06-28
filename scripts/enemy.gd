@@ -11,14 +11,20 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var health = 20
 var player
 var shooting = false
+
+var playerDead = false
+
 func _ready():
 	player = get_node("/root/World/Player")
+	player.died.connect(_player_died)
 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
-	look_at(player.position)
+		
+	if not playerDead:
+		look_at(player.position)
+		
 	if not shooting and $RayCast3D.is_colliding():
 		shooting = true
 		var bullet = BULLET.instantiate()
@@ -35,3 +41,6 @@ func decreaseHealth(amount):
 	health -= amount
 	if health <= 0:
 		queue_free()
+		
+func _player_died():
+	playerDead = true
