@@ -1,14 +1,32 @@
 # UntitledMechGame
 
 ## Todo
-- [ ] Player
+- [x] Player
   - [x] Movement
   - [x] Health
-  - [ ] Modularity
+  - [x] Modularity
   - [x] Auto Aim
 - [ ] Enemies
   - [x] Attacking Player
   - [ ] Movement
   - [x] Taking Damage
-- [ ] Store
-- [ ] Missions 
+- [x] Store
+- [x] Bounties
+- [ ] Weapons
+  - [x] Blaster
+  - [x] Rapid Fire
+  - [ ] Charge Blast
+  - [ ] Shotgun Blast
+  - [ ] Laser
+- [ ] Boosters
+  - [x] Built-in Booster
+  - [x] Fast Booster
+  - [ ] Charge Jump
+  - [ ] Hot Air Balloon
+  - [ ] Helicopter
+- [ ] Legs
+  - [x] Walker
+  - [x] Skater
+  - [ ] Treads
+  - [ ] Hovercraft
+  - [ ] Propulsion
