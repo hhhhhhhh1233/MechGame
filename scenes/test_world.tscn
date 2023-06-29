@@ -773,7 +773,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 89
 text = "Paused"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Message" type="ColorRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -787,7 +787,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.172549, 0.0156863, 0.0392157, 1)
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="Label" type="Label" parent="Message"]
 layout_mode = 0
 offset_left = 11.0
 offset_top = 81.0
@@ -796,7 +796,7 @@ offset_bottom = 182.0
 theme_override_font_sizes/font_size = 67
 text = "no survivors"
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="WinCondition" type="ColorRect" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -807,7 +807,7 @@ offset_bottom = 184.0
 grow_horizontal = 0
 color = Color(0.0705882, 0.0352941, 0.215686, 1)
 
-[node name="Label" type="Label" parent="ColorRect2"]
+[node name="Label" type="Label" parent="WinCondition"]
 layout_mode = 0
 offset_left = 11.0
 offset_top = 51.0
@@ -815,5 +815,25 @@ offset_right = 197.0
 offset_bottom = 127.0
 theme_override_font_sizes/font_size = 49
 text = "40 left"
+
+[node name="Ammo" type="ColorRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = -163.0
+offset_right = 438.0
+offset_bottom = -47.0
+grow_vertical = 0
+color = Color(0.0156863, 0.113725, 0.0823529, 1)
+
+[node name="Label" type="Label" parent="Ammo"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 40.0
+offset_right = 185.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 42
+text = "ammo: 300"
 
 [connection signal="id_pressed" from="PauseMenu" to="PauseMenu" method="_on_id_pressed"]

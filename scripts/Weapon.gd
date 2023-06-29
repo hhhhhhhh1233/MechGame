@@ -16,5 +16,5 @@ func _init(i: int, n: String, o: bool, b: Object, sd: float, w: float):
 	shoot_delay = sd
 	weight = w
 
-func shoot(position, direction):
+func shoot(_position, _direction):
 	pass

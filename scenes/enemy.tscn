@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8cdldlku4sl3"]
+[gd_scene load_steps=9 format=3 uid="uid://b8cdldlku4sl3"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_gjll3"]
+[ext_resource type="Texture2D" uid="uid://bnjo4flpjw1sq" path="res://EnemyHighlightUnfocused.png" id="2_6kast"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oenme"]
 
@@ -48,3 +49,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -30)
 collision_mask = 2
+
+[node name="InSightHighlight" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 1.7463, 0)
+visible = false
+texture = ExtResource("2_6kast")

@@ -4,6 +4,7 @@ extends Node
 @onready var RAPID_BULLET = preload("res://scenes/strong_bullet.tscn")
 
 var cash = 200
+var debt = 0
 
 var Blaster
 var Rapid_fire

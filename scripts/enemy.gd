@@ -44,3 +44,9 @@ func decreaseHealth(amount):
 		
 func _player_died():
 	playerDead = true
+
+func set_highlight(boo):
+	if boo:
+		$InSightHighlight.show()
+	else:
+		$InSightHighlight.hide()

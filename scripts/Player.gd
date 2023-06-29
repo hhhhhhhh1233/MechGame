@@ -17,7 +17,7 @@ var sensitivity = 0.0005
 var health = 250
 
 var shooting = false
-
+var ammo = 300
 #@onready var BULLET = preload("res://bullet.tscn")
 #@onready var STRONG_BULLET = preload("res://strong_bullet.tscn")
 
@@ -43,7 +43,7 @@ func _ready():
 	BOOST_ACCELERATION = player_loadout.booster.boost_acceleration
 	
 	WEIGHT = player_loadout.leg.weight + player_loadout.booster.weight + player_loadout.weapon.weight
-
+	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -58,7 +58,18 @@ func _physics_process(delta):
 		await get_tree().create_timer(0.2).timeout
 		$RayCast3D.enabled = true
 	
-	var enemiesInSight = $AutoAimBox.get_overlapping_bodies()
+	var enemiesInRange = $AutoAimRange.get_overlapping_bodies()
+	var enemiesInSight = []
+	for enemy in enemiesInRange:
+		$AimDetectionRay.global_position = $SpringArm3D/CameraTarget.global_position
+		$AimDetectionRay.look_at(enemy.position)
+		$AimDetectionRay.force_raycast_update()
+		if $AimDetectionRay.is_colliding():
+			enemiesInSight.append(enemy)
+			enemy.set_highlight(true)
+		else:
+			enemy.set_highlight(false)
+	
 	var shortest
 	if enemiesInSight:
 		shortest = enemiesInSight[0]
@@ -66,12 +77,13 @@ func _physics_process(delta):
 			if Vector3($Gun.global_position - i.global_position).length() < Vector3($Gun.global_position - shortest.global_position).length():
 				shortest = i
 		$EnemyHighlight.global_position = shortest.global_position + Vector3(0,2,0)
+		shortest.set_highlight(false)
 		$EnemyHighlight.show()
 	else:
 		$EnemyHighlight.hide()
 	
 	if Input.is_action_pressed("shoot"):
-		if not shooting:
+		if not shooting and ammo > 0:
 			shooting = true
 			var bullet = BULLET.instantiate()
 			$Gun.add_child(bullet)
@@ -79,6 +91,8 @@ func _physics_process(delta):
 				bullet.changeDirection(Vector3(shortest.global_position - $Gun.global_position).normalized())
 			Input.start_joy_vibration(0, 0.1, 0)
 			await get_tree().create_timer(SHOOT_DELAY).timeout
+			ammo -= 1
+			player_loadout.debt += 0.1
 			Input.stop_joy_vibration(0)
 			shooting = false
 
@@ -91,6 +105,7 @@ func _physics_process(delta):
 
 	# Handle Jump.
 	if Input.is_action_pressed("fly"):
+		player_loadout.debt += delta
 		$RayCast3D.enabled = false
 		Input.start_joy_vibration(0, 0, 0.1, 0.2)
 		velocity.y += BOOST_VELOCITY * BOOST_ACCELERATION - WEIGHT
@@ -132,7 +147,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	$"../Ammo/Label".text = "ammo: %d" % ammo
 	move_and_slide()
 
 func decreaseHealth(amount):
@@ -158,3 +173,7 @@ func _input(event):
 		#rotate_x()
 		#rotate_y()
 		#camera.rotation.x = clampf(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+
+
+func _on_auto_aim_range_body_exited(body):
+	body.set_highlight(false)
