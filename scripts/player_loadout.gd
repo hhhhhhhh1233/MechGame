@@ -22,17 +22,18 @@ func _ready():
 		weapons = save.weapons
 		legs = save.legs
 		boosters = save.boosters
+		
 		weapon = weapons[save.currentWeaponID]
 		booster = boosters[save.currentBoosterID]
 		leg = legs[save.currentLegID]
+		
 		cash = save.cash
 	else:
 		weapons = [Blaster.new(), RapidFire.new(), Shotgun.new()]
-		weapon = weapons[0]
-
 		legs = [Walker.new(), Skater.new(), Hovercraft.new()]
-		leg = legs[0]
-	
 		boosters = [BuiltInBooster.new(), FastBooster.new(), ChargeBoost.new()]
+
+		weapon = weapons[0]
+		leg = legs[0]
 		booster = boosters[0]
 
