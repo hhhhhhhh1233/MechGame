@@ -12,6 +12,10 @@ func _on_garage_pressed():
 
 
 func _on_quit_pressed():
+	# SAVING STUFF
+	var player_loadout = get_node("/root/PlayerLoadout")
+	SaveGame.new().write_savegame(player_loadout.weapons, player_loadout.legs, player_loadout.boosters, player_loadout.weapon.id, player_loadout.booster.id, player_loadout.leg.id, player_loadout.cash)
+	
 	get_tree().quit()
 
 

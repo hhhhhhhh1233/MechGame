@@ -17,12 +17,22 @@ var booster
 var leg
 
 func _ready():
-	weapons = [Blaster.new(), RapidFire.new(), Shotgun.new()]
-	weapon = weapons[0]
+	var save = SaveGame.load_savegame()
+	if save:
+		weapons = save.weapons
+		legs = save.legs
+		boosters = save.boosters
+		weapon = weapons[save.currentWeaponID]
+		booster = boosters[save.currentBoosterID]
+		leg = legs[save.currentLegID]
+		cash = save.cash
+	else:
+		weapons = [Blaster.new(), RapidFire.new(), Shotgun.new()]
+		weapon = weapons[0]
 
-	legs = [Walker.new(), Skater.new(), Hovercraft.new()]
-	leg = legs[0]
+		legs = [Walker.new(), Skater.new(), Hovercraft.new()]
+		leg = legs[0]
 	
-	boosters = [BuiltInBooster.new(), FastBooster.new(), ChargeBoost.new()]
-	booster = boosters[0]
+		boosters = [BuiltInBooster.new(), FastBooster.new(), ChargeBoost.new()]
+		booster = boosters[0]
 
