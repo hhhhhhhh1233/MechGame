@@ -69,8 +69,7 @@ grow_horizontal = 0
 grow_vertical = 2
 focus_neighbor_left = NodePath("../Garage")
 theme_override_font_sizes/font_size = 32
-disabled = true
-text = "Bounty 2 - $200"
+text = "Bridge Bounty - $200"
 
 [node name="Bounty3" type="Button" parent="."]
 layout_mode = 1
@@ -143,5 +142,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2095, -1.97587, -2.95811)
 mesh = SubResource("BoxMesh_b5l8u")
 
 [connection signal="pressed" from="Bounty1" to="." method="_on_bounty_1_pressed"]
+[connection signal="pressed" from="Bounty2" to="." method="_on_bounty_2_pressed"]
 [connection signal="pressed" from="Garage" to="." method="_on_garage_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

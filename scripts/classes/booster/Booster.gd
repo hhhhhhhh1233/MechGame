@@ -14,3 +14,12 @@ func _init(i: int, n: String, o: bool, bv: float, ba: float, w: float):
 	boost_velocity = bv
 	boost_acceleration = ba
 	weight = w
+
+func boost(player, walkingRay):
+	walkingRay.enabled = false
+	player.velocity.y += boost_velocity * boost_acceleration - weight
+	if player.velocity.y > boost_velocity:
+		player.velocity.y = boost_velocity
+
+func releaseBoost(_player, walkingRay):
+	walkingRay.enabled = true

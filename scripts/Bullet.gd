@@ -26,7 +26,14 @@ func changeDirection(dir):
 	add_constant_central_force(dir * SPEED)
 
 func _on_area_3d_body_entered(body):
-	if body.collision_layer == 2 or body.collision_layer == 4:
+	if body.has_method("decreaseHealth"):
 		body.decreaseHealth(DAMAGE)
+
+	queue_free()
+
+
+func _on_area_3d_area_shape_entered(_area_rid, area, _area_shape_index, _local_shape_index):
+	if area.get_parent().has_method("decreaseHealth"):
+		area.get_parent().decreaseHealth(DAMAGE)
 
 	queue_free()

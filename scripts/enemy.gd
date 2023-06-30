@@ -8,7 +8,7 @@ const SHOOT_DELAY = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 #@onready var player = 
-var health = 20
+var health = 150
 var player
 var shooting = false
 
@@ -40,6 +40,7 @@ func _physics_process(delta):
 func decreaseHealth(amount):
 	health -= amount
 	if health <= 0:
+		Input.stop_joy_vibration(0)
 		queue_free()
 		
 func _player_died():

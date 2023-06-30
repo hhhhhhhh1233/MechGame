@@ -124,3 +124,4 @@ jump={
 3d_physics/layer_3="Enemy"
 3d_physics/layer_4="Projectile"
 3d_physics/layer_5="AimBox"
+3d_physics/layer_6="Explosive"

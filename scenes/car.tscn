@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://ds8rdd8cgvlfs"]
+
+[ext_resource type="Script" path="res://scripts/car.gd" id="1_snlha"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j5rho"]
+size = Vector3(4, 2, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fve5g"]
+albedo_color = Color(0.235294, 1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gov52"]
+size = Vector3(4, 2, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lqof7"]
+size = Vector3(4, 1, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3p7p7"]
+albedo_color = Color(0.654902, 1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tvpt7"]
+size = Vector3(4, 1, 3)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2bk1b"]
+radius = 10.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8niod"]
+size = Vector3(4.5, 2.5, 8.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f7qvt"]
+size = Vector3(4.5, 1.5, 3.5)
+
+[node name="Car" type="Node3D"]
+script = ExtResource("1_snlha")
+
+[node name="Body" type="StaticBody3D" parent="."]
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+mesh = SubResource("BoxMesh_j5rho")
+surface_material_override/0 = SubResource("StandardMaterial3D_fve5g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("BoxShape3D_gov52")
+
+[node name="Roof" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Roof"]
+mesh = SubResource("BoxMesh_lqof7")
+surface_material_override/0 = SubResource("StandardMaterial3D_3p7p7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Roof"]
+shape = SubResource("BoxShape3D_tvpt7")
+
+[node name="ExplosiveRange" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosiveRange"]
+shape = SubResource("SphereShape3D_2bk1b")
+
+[node name="Hurtbox" type="Area3D" parent="." groups=["Hurtable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0853131, 0)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("BoxShape3D_8niod")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_f7qvt")

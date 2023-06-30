@@ -17,7 +17,7 @@ func _ready():
 		menu.get_popup().hide_on_checkable_item_selection = false
 		menu.get_popup().hide_on_item_selection = false
 		menu.text = equipped[j].name
-		for i in range(2):
+		for i in range(3):
 			if not loadouts[j][i].owned:
 				menu.get_popup().set_item_text(i, ("[$%d] " % (i*100)) + loadouts[j][i].name)
 				menu.get_popup().set_item_as_radio_checkable(i, false)

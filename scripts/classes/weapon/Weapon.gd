@@ -6,6 +6,7 @@ var owned: bool
 var bullet: Object
 var shoot_delay: float
 var weight: float
+var autoRange: float
 
 
 func _init(i: int, n: String, o: bool, b: Object, sd: float, w: float):
@@ -16,5 +17,5 @@ func _init(i: int, n: String, o: bool, b: Object, sd: float, w: float):
 	shoot_delay = sd
 	weight = w
 
-func shoot(_position, _direction):
-	pass
+func shoot(gun, enemiesInSight, closestEnemy):
+	print(gun, enemiesInSight, closestEnemy)

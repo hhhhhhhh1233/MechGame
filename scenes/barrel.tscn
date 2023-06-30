@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqv3k0rew6mpl"]
+
+[ext_resource type="Script" path="res://scripts/barrel.gd" id="1_hrogk"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8rcj0"]
+top_radius = 0.75
+bottom_radius = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajj54"]
+albedo_color = Color(1, 0.109804, 0.105882, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_moo4r"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_drkc5"]
+radius = 10.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ft65o"]
+radius = 1.36628
+height = 3.88586
+
+[node name="Barrel" type="Node3D"]
+script = ExtResource("1_hrogk")
+
+[node name="Body" type="StaticBody3D" parent="."]
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+mesh = SubResource("CylinderMesh_8rcj0")
+surface_material_override/0 = SubResource("StandardMaterial3D_ajj54")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("CylinderShape3D_moo4r")
+
+[node name="ExplosiveRange" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosiveRange"]
+shape = SubResource("SphereShape3D_drkc5")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape3D_ft65o")

@@ -2,45 +2,50 @@ extends CharacterBody3D
 
 signal died
 
-var SPEED = 7.5
 var JUMP_VELOCITY = 6
-#var JUMP_ACCEL = 0.1
 var LOOK_SPEED = 2
 var LOOK_ANGLE = 0.8
 var WEIGHT = 0.3
-var SHOOT_DELAY = 0.1
-var BOOST_VELOCITY = 6
-var BOOST_ACCELERATION = 0.1
+var SHOOT_DELAY: float
 
 var sensitivity = 0.0005
 
-var health = 250
+var health = 500
 
 var shooting = false
 var ammo = 300
+
 #@onready var BULLET = preload("res://bullet.tscn")
 #@onready var STRONG_BULLET = preload("res://strong_bullet.tscn")
 
-var BULLET
+#var BULLET
 
 var player_loadout
 
+var weapon
+var booster
+var leg
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	player_loadout = get_node("/root/PlayerLoadout")
 	
-	BULLET = player_loadout.weapon.bullet
 	SHOOT_DELAY = player_loadout.weapon.shoot_delay
 	
-	SPEED = player_loadout.leg.speed
-	JUMP_VELOCITY = player_loadout.leg.jump_velocity
+	weapon = player_loadout.weapon
+	booster = player_loadout.booster
+	leg = player_loadout.leg
 	
-	BOOST_VELOCITY = player_loadout.booster.boost_velocity
-	BOOST_ACCELERATION = player_loadout.booster.boost_acceleration
+	var sphere = SphereShape3D.new()
+	sphere.radius = weapon.autoRange
+	$AutoAimRange/CollisionShape3D.shape = sphere
+	
+	JUMP_VELOCITY = player_loadout.leg.jump_velocity
 	
 	WEIGHT = player_loadout.leg.weight + player_loadout.booster.weight + player_loadout.weapon.weight
 	
@@ -52,7 +57,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 		
-	if Input.is_action_just_pressed("jump") and $RayCast3D.is_colliding():#is_on_floor():
+	if Input.is_action_just_pressed("jump") and $RayCast3D.is_colliding():
 		velocity.y = JUMP_VELOCITY
 		$RayCast3D.enabled = false
 		await get_tree().create_timer(0.2).timeout
@@ -85,10 +90,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("shoot"):
 		if not shooting and ammo > 0:
 			shooting = true
-			var bullet = BULLET.instantiate()
-			$Gun.add_child(bullet)
-			if enemiesInSight:
-				bullet.changeDirection(Vector3(shortest.global_position - $Gun.global_position).normalized())
+			weapon.shoot($Gun, enemiesInSight, shortest)
 			Input.start_joy_vibration(0, 0.1, 0)
 			await get_tree().create_timer(SHOOT_DELAY).timeout
 			ammo -= 1
@@ -103,20 +105,13 @@ func _physics_process(delta):
 		$"../PauseMenu".set_focused_item(0)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-	# Handle Jump.
 	if Input.is_action_pressed("fly"):
 		player_loadout.debt += delta
-		$RayCast3D.enabled = false
+		booster.boost(self, $RayCast3D)
 		Input.start_joy_vibration(0, 0, 0.1, 0.2)
-		velocity.y += BOOST_VELOCITY * BOOST_ACCELERATION - WEIGHT
-		if velocity.y > BOOST_VELOCITY:
-			velocity.y = BOOST_VELOCITY
 	if Input.is_action_just_released("fly"):
-		$RayCast3D.enabled = true
+		booster.releaseBoost(self, $RayCast3D)
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("walk_left", "walk_right", "walk_forward", "walk_back")
 	var look_dir = Input.get_vector("look_left","look_right", "look_up", "look_down")
 	
 	if look_dir:
@@ -138,15 +133,9 @@ func _physics_process(delta):
 		var offset = x - length
 		
 		velocity.y += (springStrength * offset - velocity.y * springDamping) * delta
-		
 	
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	leg.walk(self)
+	
 	$"../Ammo/Label".text = "ammo: %d" % ammo
 	move_and_slide()
 
@@ -155,10 +144,6 @@ func decreaseHealth(amount):
 	if health <= 0:
 		died.emit()
 		queue_free()
-		
-		#await get_tree().create_timer(3).timeout
-		#player_loadout.cash -= 100
-		#get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		
 func _input(event):
 	if !visible:
@@ -170,9 +155,6 @@ func _input(event):
 		if rotation.x < -LOOK_ANGLE:
 			rotation.x = -LOOK_ANGLE
 		rotation.y += event.relative.x * sensitivity * -1 * LOOK_SPEED
-		#rotate_x()
-		#rotate_y()
-		#camera.rotation.x = clampf(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
 
 func _on_auto_aim_range_body_exited(body):
