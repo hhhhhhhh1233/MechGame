@@ -15,18 +15,18 @@
 - [ ] Weapons
   - [x] Blaster
   - [x] Rapid Fire
-  - [ ] Charge Blast
+  - [x] Charge Blast
   - [ ] Shotgun Blast
   - [ ] Laser
 - [ ] Boosters
   - [x] Built-in Booster
   - [x] Fast Booster
-  - [ ] Charge Jump
+  - [x] Charge Jump
   - [ ] Hot Air Balloon
   - [ ] Helicopter
 - [ ] Legs
   - [x] Walker
   - [x] Skater
   - [ ] Treads
-  - [ ] Hovercraft
+  - [x] Hovercraft
   - [ ] Propulsion
