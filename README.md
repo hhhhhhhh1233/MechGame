@@ -15,8 +15,8 @@
 - [ ] Weapons
   - [x] Blaster
   - [x] Rapid Fire
-  - [x] Charge Blast
-  - [ ] Shotgun Blast
+  - [ ] Charge Blast
+  - [x] Shotgun Blast
   - [ ] Laser
 - [ ] Boosters
   - [x] Built-in Booster
